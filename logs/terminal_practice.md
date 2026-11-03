@@ -2,7 +2,7 @@
 
 이 문서는 과제 수행 중 진행한 기본적인 터미널 명령어 실습 기록입니다.
 
-
+```powershell
 PS C:\Users\homec\Desktop\codyssey_mission1> pwd
 
 Path
@@ -79,3 +79,4 @@ d----        2026-11-03  오후 5:29                pract
 
 PS C:\Users\homec\Desktop\codyssey_mission1> mv test.txt practice/       
 PS C:\Users\homec\Desktop\codyssey_mission1> 
+```
