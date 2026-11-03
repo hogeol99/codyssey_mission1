@@ -12,7 +12,7 @@
   - 전: `drwxr-xr-x`
   - 후: `drwxrwxrwx`
 
-```powershell
+```bash
 PS C:\Users\homec\Desktop\codyssey_mission1> docker run -it --rm alpine sh                                      
 Unable to find image 'alpine:latest' locally
 latest: Pulling from library/alpine
