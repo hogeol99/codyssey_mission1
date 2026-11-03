@@ -1,6 +1,3 @@
-## 실습 환경 및 이슈 해결
-- **문제 발생**: Windows 환경의 Git Bash에서 `chmod` 명령어가 실제 파일 권한에 반영되지 않는 문제 확인.
-- **해결 방법**: Docker를 이용해 리눅스 환경(Alpine Linux) 컨테이너를 실행하여 실습을 진행함.
 
 ## 실습 로그 (Docker Container 내부)
 ### 1. 파일 권한 변경 (secret.txt)
