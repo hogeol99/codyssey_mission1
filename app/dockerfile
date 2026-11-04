@@ -1,0 +1,15 @@
+# 1. 베이스 이미지 선택 (A방식: NGINX 최신버전)
+FROM nginx:latest
+
+# 2. 커스텀 포인트 1: 환경 변수 설정 (이미지 정보 기록)
+ENV APP_OWNER="KwonJiUn"
+
+# 3. 커스텀 포인트 2: 기본 웹 페이지 교체 (정적 콘텐츠 교체)
+# 내 컴퓨터의 index.html을 컨테이너 안의 nginx 경로로 복사합니다.
+COPY index.html /usr/share/nginx/html/index.html
+
+# 4. 커스텀 포인트 3: 라벨 추가 (메타데이터)
+LABEL description="나의 첫 번째 커스텀 웹 서버 이미지"
+
+# 컨테이너가 80번 포트를 사용함을 명시
+EXPOSE 80
