@@ -11,6 +11,8 @@
 - **COPY (콘텐츠 교체)**: 기본 NGINX 환영 페이지 대신 내가 직접 작성한 index.html을 출력하도록 설정함.
 - **LABEL 추가**: 이미지의 용도를 설명하는 메타데이터를 추가하여 가독성을 높임.
 [확인](../app/dockerfile)
+- **커스텀 index.html 구성**:기본 Nginx 초기 화면을 대체하기 위해 작성된 커스텀 HTML 파일의 내용입니다.
+[확인](../app/index.html)
 
 ## 3. 빌드 및 실행 결과
 - **빌드 명령어**: `docker build -t my-custom-web:1.0 .`
