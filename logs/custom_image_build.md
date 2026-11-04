@@ -80,3 +80,11 @@ PS C:\Users\homec\Desktop\codyssey_mission1\app> docker inspect --format='{{.Con
 PS C:\Users\homec\Desktop\codyssey_mission1\app> docker inspect --format='{{.Config.Env}}' my-custom-web:1.0               
 [PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NGINX_VERSION=1.31.8 NJS_VERSION=1.0.2 NJS_RELEASE=1~trixie ACME_VERSION=0.4.1 PKG_RELEASE=1~trixie DYNPKG_RELEASE=1~trixie APP_OWNER=KwonJiUn]
 ```
+
+### 네트워크 네임스페이스 및 포트 포워딩 원리
+네트워크 네임스페이스(Network Namespace):
+
+Docker는 리눅스의 네트워크 네임스페이스 기술을 사용하여 각 컨테이너마다 독립적인 네트워크 스택(IP, 라우팅 테이블, 포트 등)을 부여합니다. 이를 통해 컨테이너들은 서로 충돌 없이 격리된 네트워크 환경에서 동작할 수 있습니다.
+포트 포워딩(Port Forwarding)의 작동 원리:
+
+컨테이너는 격리된 네트워크 안에 있기 때문에 외부에서 직접 접근할 수 없습니다. 따라서 **호스트의 특정 포트(8080)**와 **컨테이너의 포트(80)**를 연결(Mapping)하여, 호스트로 들어온 신호를 컨테이너 내부로 전달해 주는 가교 역할을 수행합니다.
