@@ -24,6 +24,23 @@ docker images 명령 시 my-custom-web 리스트 확인됨.
 - **웹 페이지 확인**:
 [확인](../images/web%20image.png)
 
+[curl확인]
+```bash
+PS C:\Users\homec\Desktop\codyssey_mission1\app> curl http://localhost:8080
+<!DOCTYPE html>
+<html>
+<head>
+    <title>나의 커스텀 도커 서버</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>안녕하세요! 도커 커스텀 이미지 빌드에 성공했습니다.</h1>
+    <p>이 페이지는 NGINX 베이스 이미지에 제 파일을 넣어서 만든 것입니다.</p>
+</body>
+</html>
+```
+
+
 - **로그 확인** :
 ```bash
 PS C:\Users\homec\Desktop\codyssey_mission1\app> docker build -t my-custom-web:1.0 .      
