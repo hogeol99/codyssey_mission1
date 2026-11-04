@@ -1,3 +1,5 @@
+## git config --list 로그
+
 ```bash
 PS C:\Users\homec\Desktop\codyssey_mission1> git config --list                            
 diff.astextplain.textconv=astextplain
@@ -29,7 +31,7 @@ branch.main.merge=refs/heads/main
 ```
 
 
-github 연동 증거 로그
+## github 연동 증거 로그
 ```bash
 PS C:\Users\homec\Desktop\codyssey_mission1> git remote -v    
 origin  https://github.com/hogeol99/codyssey_mission1 (fetch)
@@ -37,5 +39,5 @@ origin  https://github.com/hogeol99/codyssey_mission1 (push)
 PS C:\Users\homec\Desktop\codyssey_mission1> 
 ```
 
-github vscode 연동
+## github vscode 연동
 [확인](../images/vscodetogit.png)
