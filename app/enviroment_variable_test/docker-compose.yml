@@ -1,0 +1,8 @@
+services:
+  my-web:
+    build: .
+    ports:
+      - "${My_PORT}:${My_PORT}"  # 호스트 8080 -> 컨테이너 8080 연결
+    environment:
+      - APP_PORT=${My_PORT}       # 파이썬 코드의 os.getenv('APP_PORT')로 들어감
+      - APP_MODE=${My_MODE} # 파이썬 코드의 os.getenv('APP_MODE')로 들어감
