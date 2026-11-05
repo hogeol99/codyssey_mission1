@@ -81,10 +81,41 @@ PS C:\Users\homec\Desktop\codyssey_mission1\app> docker inspect --format='{{.Con
 [PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NGINX_VERSION=1.31.8 NJS_VERSION=1.0.2 NJS_RELEASE=1~trixie ACME_VERSION=0.4.1 PKG_RELEASE=1~trixie DYNPKG_RELEASE=1~trixie APP_OWNER=KwonJiUn]
 ```
 
-### 네트워크 네임스페이스 및 포트 포워딩 원리
+# 네트워크 네임스페이스 및 포트 포워딩 원리
 네트워크 네임스페이스(Network Namespace):
 
 Docker는 리눅스의 네트워크 네임스페이스 기술을 사용하여 각 컨테이너마다 독립적인 네트워크 스택(IP, 라우팅 테이블, 포트 등)을 부여합니다. 이를 통해 컨테이너들은 서로 충돌 없이 격리된 네트워크 환경에서 동작할 수 있습니다.
 포트 포워딩(Port Forwarding)의 작동 원리:
 
 컨테이너는 격리된 네트워크 안에 있기 때문에 외부에서 직접 접근할 수 없습니다. 따라서 **호스트의 특정 포트(8080)**와 **컨테이너의 포트(80)**를 연결(Mapping)하여, 호스트로 들어온 신호를 컨테이너 내부로 전달해 주는 가교 역할을 수행합니다.
+
+
+# 포트 충돌시 해소방법
+
+## 1 포트 점유 중인 PID 찾기
+window의 경우
+```bash
+netstat -ano | findstr :8080
+```
+
+Linux/maxOS/WSL2의 경우:
+```bash
+# 방법 1: lsof 사용 (가장 직관적)
+sudo lsof -i :8080
+
+# 방법 2: ss 사용 (최신 리눅스 표준)
+ss -tulnp | grep :8080
+
+# 방법 3: netstat 사용 (전통적인 방식)
+netstat -tulnp | grep :8080
+```
+
+## 2 PID 확인
+찾아낸 **PID(프로세스 ID)**가 진짜 내가 꺼도 되는 프로그램인지 확인합니다. (예: PID가 1234라면)
+- Windows: `tasklist /fi "pid eq 1234"`
+- Linux/WSL2: `ps -fp 1234`
+
+## 3 프로세스 강제 종료
+범인이 확실하다면 프로세스를 종료하여 포트를 해제합니다.
+- Windows: `taskkill /F /PID 1234`
+- Linux/WSL2: `kill -9 1234`
