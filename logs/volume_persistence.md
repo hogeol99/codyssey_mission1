@@ -53,3 +53,29 @@ Volume Persistence Test - Success!
 
 ## 3. 최종 결과
 - 컨테이너의 생명주기와 상관없이 볼륨에 저장된 데이터는 영구적으로 보존됨을 확인함.
+
+## 4.데이터 백업 및 관리 전략
+
+### 1. docker cp 사용
+
+가장 직관적인 방법으로, 컨테이너 내부의 데이터를 호스트 컴퓨터로 직접 복사하는 방식
+
+```bash
+# 컨테이너의 /app/logs 데이터를 현재 폴더의 backup 폴더로 복사
+docker cp my_container:/app/logs ./backup_logs
+```
+
+- 장점: 별도의 설정 없이 즉시 실행 가능합니다.
+- 단점: 매번 수동으로 실행해야 하므로 자동화가 어렵습니다.
+
+### 2. 임시 컨테이너를 이용한 압축
+
+Docker 볼륨 전체를 압축 파일로 만들어 보관하는 가장 권장되는 방식
+
+```bash
+docker run --rm --volumes-from [대상_컨테이너] -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar [데이터_경로]
+```
+--volumes-from: 백업할 볼륨을 가진 컨테이너에 연결합니다.
+-v $(pwd):/backup: 현재 호스트 경로를 컨테이너의 /backup에 마운트합니다.
+tar cvf: 데이터를 하나로 묶어 압축 파일을 생성합니다.
+--rm: 작업이 끝나면 임시로 쓴 컨테이너를 자동으로 삭제합니다.
