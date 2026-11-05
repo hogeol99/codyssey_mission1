@@ -1,16 +1,27 @@
 
 # Compose를 활용한 container 생성및 포트 연결
 
+## compose 방식 장점
+
+- 문서화: 파일 자체가 실행 옵션(포트, 볼륨, 환경변수 등)을 기록한 문서가 됩니다.
+- 버전 관리: 이 파일을 Git에 올리면 팀원 누구나 똑같은 환경을 1초 만에 구축할 수 있습니다.
+- 휴먼 에러 방지: 긴 명령어를 치다가 오타를 낼 일이 없습니다.
 
 ## yml파일을 통한 container 생성
 
 - [yml 파일 확인](../app/compose_practice/docker-compose.yml)
+
+- `docker compose up -d`
 
 ```bash
 PS C:\Users\homec\Desktop\codyssey_mission1\app\compose_practice> docker compose up -d
 [+] up 2/2
  ✔ Network compose_practice_default    Created                                                                                                                                               0.1s
  ✔ Container compose_practice-my-web-1 Started                                                                                                                                               1.1s
+ ```
+
+ ## curl로 웹페이지 확인
+ ```bash
 PS C:\Users\homec\Desktop\codyssey_mission1\app\compose_practice> curl http://localhost:8080
 <!DOCTYPE html>
 <html>
