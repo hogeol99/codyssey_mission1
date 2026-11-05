@@ -58,7 +58,7 @@ multi_container_test-web-server-1   multi_container_test-web-server   "python ap
 컨테이너 내부에서 어떤 일이 일어나는지 들여다봅니다. (가장 중요한 디버깅 단계)
 -f (Follow): 로그를 실시간으로 계속 출력합니다.
 --tail 10: 너무 많은 로그 대신 마지막 10줄만 먼저 보여줍니다.
-확인: 브라우저에서 새로고침을 누를 때마다 로그가 찍히는지 확인해 보세요! (중단하려면 Ctrl + C)
+브라우저에서 새로고침을 누를 때마다 로그가 찍힘 (중단하려면 Ctrl + C)
 
 ```bash
 PS C:\Users\homec\Desktop\codyssey_mission1\app\multi_container_test> docker compose logs -f --tail 10 
